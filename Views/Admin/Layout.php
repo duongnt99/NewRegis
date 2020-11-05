@@ -44,11 +44,16 @@
     <script src="assets/js/currency-autocomplete.js"></script> -->
 
     <style>
+    .content {
+        min-height: calc(100vh - 231px);
+    }
     .autocomplete {
         position: relative;
         display: inline-block;
     }
-
+    li .active {
+        color: #e9e9e9;
+    }
     input {
         border: 1px solid transparent;
         background-color: white;
@@ -99,11 +104,11 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
-                        <a href="admin"><i class="menu-icon fa fa-laptop"></i>Trang Chủ </a>
+                    <li class="<?php if ($_GET['controller'] == 'admin') {echo 'active';} ?>">
+                        <a href="admin <?php if ($_GET['controller'] == 'admin') {echo 'active';} ?>"><i class="menu-icon fa fa-laptop"></i>Trang Chủ </a>
                     </li>
-                    <li>
-                        <a class="collapse-item <?php if ($_GET['controller'] == 'TaoKi') {echo 'active';} ?> "
+                    <li class="<?php if ($_GET['controller'] == 'tao-ki-thi') {echo 'active';} ?>">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'tao-ki-thi') {echo 'active';} ?> "
                             href="tao-ki-thi"> <i class="menu-icon fa fa-table"></i>Kì Thi</a>
                     </li>
                     <li class="menu-title">Danh Sách</li><!-- /.menu-title -->
@@ -122,8 +127,8 @@
                                     href="danh-sach-AI-duoc-thi">Trí tuệ nhân tạo</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a class="collapse-item <?php if ($_GET['controller'] == 'ListStudent') {echo 'active';} ?> "
+                    <li class="<?php if ($_GET['controller'] == 'dssv') {echo 'active';} ?> ">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'dssv') {echo 'active';} ?> "
                             href="dssv"> <i class="menu-icon fa fa-users"></i>Sinh Viên</a>
                     </li>
                     <li class="menu-item-has-children dropdown">
@@ -156,7 +161,7 @@
     </aside>
     <!-- /#left-panel -->
     <!-- Right Panel -->
-    <div id="right-panel" class="right-panel">
+    <div id="right-panel" class="right-panel" >
         <!-- Header-->
         <header id="header" class="header">
             <div class="top-left">
@@ -200,7 +205,7 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-10">
-                        Copyright &copy; 
+                        Copyright &copy;
                     </div>
                     <div class="col-sm-2 text-right">
                     </div>
@@ -210,9 +215,9 @@
         <!-- /.site-footer -->
     </div>
     <!-- /#right-panel -->
-    <div>
+    <!-- <div>
         <a href="#backtotop"><i class="fas fa-angle-double-up" style="font-size: 35px;color: #555;margin-left: 90%;"></i></a>
-    </div>
+    </div> -->
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@2.2.4/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.4/dist/umd/popper.min.js"></script>
@@ -250,7 +255,7 @@
     <script language="javascript" src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
     <script language="javascript">
     function load1() {
-        // URL 
+        // URL
         var url = "exam-cards.html";
 
         // Data lúc này cho bằng rỗng

@@ -16,7 +16,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                 <div class="page-header float-right">
                     <div class="page-title">
                         <ol class="breadcrumb text-right">
-                            <li class="active"><a href="#">Trang chủ</a></li>
+                            <li class=""><a href="#">Trang chủ</a></li>
                         </ol>
                     </div>
                 </div>
@@ -93,7 +93,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
             </div>
         </div>
         <hr class="hr-normal">
-    
+
 
         <div class="row" style="margin-top: 20px;">
             <!-- <div class="col-md-4">

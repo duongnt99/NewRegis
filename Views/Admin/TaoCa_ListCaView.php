@@ -38,8 +38,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="mediumModalLabel" style="text-align: center"><strong>Tạo Ca Thi
-                                Mới</strong></h5>
+                        <h5 class="modal-title" id="mediumModalLabel" style="text-align: center"><strong>Tạo Ca Thi Mới</strong></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -161,6 +160,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                 <th>Mã ca thi</th>
                                 <th>Đã đăng ký</th>
                                 <th>Mã kì thi</th>
+                                <th>Sửa</th>
                                 <th>Xóa</th>
                             </tr>
                         </thead>
@@ -179,8 +179,114 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                 <td><?php echo $item->IDClasses ?></td>
                                 <td><?php echo $item->DaDangKy ?></td>
                                 <td><?php echo $item->IDKiThi ?></td>
+                                <td>
+                                <button type="button" class="btn btn-warning mb-1" data-toggle="modal" data-target="#mediumModal<?php echo $item->id; ?>">
+                                <i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
+                                </td>
                                 <td><a href="index.php?area=Admin&controller=TaoCa&action=delete&id=<?php echo $item->id; ?>" style="color:red;">Xóa</a></td>
                             </tr>
+<div class="modal fade" id="mediumModal<?php echo $item->id; ?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel<?php echo $item->id; ?>" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="mediumModalLabel<?php echo $item->id; ?>" style="text-align: center"><strong>Sửa Ca Thi Mới</strong></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="post" action="<?php echo $formActionCathi ?>">
+                            <div class="row form-group" class="autocomplete">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label"><strong>Mã
+                                            Học Phần</strong></label></div>
+                                <div class="col-12 col-md-9"><input type="text" id="mahocphan"  value="<?php echo $item->SubjectID ?>" name="mahocphan"
+                                        placeholder="Mã Học Phần" class="form-control"><small
+                                        class="form-text text-muted"></small></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input"
+                                        class=" form-control-label"><strong>Học Phần</strong></label></div>
+                                <div class="col-12 col-md-9">
+                                    <input type="text" id="hocphan" value="<?php echo $item->SubjectName ?>" name="hocphan" placeholder="Học Phần" class="form-control"><small class="form-text text-muted"></small>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input"
+                                        class=" form-control-label"><strong>Ngày Thi</strong></label></div>
+                                <div class='col-12 col-md-9'>
+                                    <div class="form-group">
+                                        <div id="filterDate2">
+
+                                            <!-- Datepicker as text field -->
+                                            <div class="input-group date" data-date-format="dd/mm/yyyy">
+                                                <input type="date" id="date" value="<?php echo $item->Date ?>" name="date" class="form-control" placeholder="dd/mm/yyyy">
+                                                <div class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group" class="autocomplete">
+                                <div class="col col-md-3"><label for="text-input"
+                                        class=" form-control-label"><strong>Phòng Thi</strong></label></div>
+                                <div class="col-12 col-md-9"><input value="<?php echo $item->Room ?>" type="text" id="phongmay" name="phongmay"
+                                        placeholder="Phòng Thi" class="form-control"><small
+                                        class="form-text text-muted"></small></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="text-input" class=" form-control-label"><strong>Số
+                                            lượng SV</strong></label></div>
+                                <div class="col-12 col-md-9"><input type="text" value="<?php echo $item->Amount ?>" id="soluong" name="soluong"
+                                        placeholder="Số lượng SV" class="form-control"><small
+                                        class="form-text text-muted"></small></div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col col-md-3"><label for="select" class=" form-control-label"><strong>Ca
+                                            Thi</strong></label></div>
+                                <div class="col-12 col-md-9">
+                                    <select name="cathi" id="cathi" class="form-control">
+                                        <option <?php  if($item->IDClasses==0) echo "selected"; else echo ""; ?> value="0">Chọn ca thi</option>
+                                        <option <?php  if($item->IDClasses==1) echo "selected";  else echo ""; ?> value="1">Ca Thi 1</option>
+                                        <option <?php  if($item->IDClasses==2) echo "selected";  else echo ""; ?> value="2">Ca Thi 2</option>
+                                        <option <?php  if($item->IDClasses==3) echo "selected";  else echo ""; ?> value="3">Ca Thi 3</option>
+                                        <option <?php  if($item->IDClasses==4) echo "selected";  else echo ""; ?> value="4">Ca Thi 4</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+
+                                <div class="col col-md-2"><label for="text-input"
+                                        class=" form-control-label"><strong>Giờ Bắt Đầu</strong></label></div>
+                                <div class='col-12 col-md-4'>
+                                    <input type="text" value="<?php echo $item->Start ?>" id="hstart" name="hstart"
+                                        placeholder="" class="form-control" readonly><small
+                                        class="form-text text-muted"></small>
+                                </div>
+
+
+                                <div class="col col-md-2"><label for="text-input"
+                                        class=" form-control-label"><strong>Giờ Kết Thúc</strong></label></div>
+                                <div class='col-12 col-md-4'>
+                                    <input type="text" value="<?php echo $item->End ?>" id="hstop" name="hstop"
+                                        placeholder="" class="form-control" readonly><small
+                                        class="form-text text-muted"></small>
+                                </div>
+
+                            </div>
+                            <!-- <input id="timepicker" width="276" /> -->
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy bỏ</button>
+                                <button type="submit" class="btn btn-primary">Xác nhận</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
                             <?php $j++; ?>
                             <?php endforeach; ?>
                         </tbody>
@@ -262,8 +368,8 @@ $this->fileLayout = "Views/Admin/Layout.php";
             $('#bootstrap-data-table-export').DataTable();
             $('.input-group.date').datepicker({format: "dd/mm/yyyy"});
             // $('.input-group.time').timepicker({format: "dd/mm/yyyy"});
-            
+
         $('.timepicker').timepicker();
-    
+
         } );
     </script>

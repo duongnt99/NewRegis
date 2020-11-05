@@ -99,18 +99,19 @@ $this->fileLayout = "Views/Admin/Layout.php";
         </div>
         <!-- !Thêm kì thi -->
         </br>
-        
+
         <?php $i=1; ?>
         <?php foreach ($data as $item) : ?>
         <?php
             echo'<a href="index.php?area=Admin&controller=TaoCa&id='.$item->id.'">';
-                echo'<div class="flip">';
+                echo'<div class="flip" style="width: 388px;">';
                     echo'<div class="front" style="background-image: url(https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">';
                         echo'<h1 class="text-shadow">'.$item->HocKi.' - '.$item->Năm.'</h1>';
                     echo'</div>';
                     echo'<div class="back">';
                     echo'<h2>'.$item->TenKiThi.'</h2>';
                         echo'<p>'.$item->Note.'</p>';
+                        echo'<button type="button" class="btn btn-danger">Xóa</button>';
                     echo'</div>';
                 echo'</div>';
             echo'</a>';
@@ -124,7 +125,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
 </div>
 <script language="javascript">
 function load1() {
-    // URL 
+    // URL
     var url = "exam-cards.html";
 
     // Data lúc này cho bằng rỗng
