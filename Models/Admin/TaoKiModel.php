@@ -18,4 +18,12 @@ trait TaoKiModel{
         $query = $conn->prepare("INSERT INTO kithi set TenKiThi=:tenkithi, Năm=:namtochuc, HocKi=:hocki, Note=:ghichu");
         $query->execute(array("tenkithi"=>$tenkithi,"namtochuc"=>$namtochuc,"hocki"=>$hocki,"ghichu"=>$ghichu));
     }
+
+
+    public function deleteKi($id)
+	{
+		$conn = Connection::getInstance();
+		$query = $conn->prepare("DELETE from kithi where id=:id");
+		$query->execute(array("id" => $id));
+	}
 }

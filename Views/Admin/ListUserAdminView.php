@@ -98,7 +98,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                     <td><?php echo $i;?></td>
                                     <td><?php echo $item->name ?></td>
                                     <td><?php echo $item->user ?></td>
-                                    <td><a href="index.php?area=Admin&controller=UserAdmin&action=deleteUserAdmin&id=<?php echo $item->id; ?>" style="color:red;">Xóa</a></td>
+                                    <td><a class="btn btn-danger" role="button" href="index.php?area=Admin&controller=UserAdmin&action=deleteUserAdmin&id=<?php echo $item->id; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a></td>
                                 </tr>
                                 <?php $i++; ?>
                                 <?php endforeach; ?>

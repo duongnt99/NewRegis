@@ -183,7 +183,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                 <button type="button" class="btn btn-warning mb-1" data-toggle="modal" data-target="#mediumModal<?php echo $item->id; ?>">
                                 <i class="fa fa-pencil" aria-hidden="true"></i> Sửa</button>
                                 </td>
-                                <td><a href="index.php?area=Admin&controller=TaoCa&action=delete&id=<?php echo $item->id; ?>" style="color:red;">Xóa</a></td>
+                                <td><a  class="btn btn-danger" role="button" href="index.php?area=Admin&controller=TaoCa&action=delete&id=<?php echo $item->id; ?>"><i class="fa fa-trash-o" aria-hidden="true"></i> Xóa</a></td>
                             </tr>
 <div class="modal fade" id="mediumModal<?php echo $item->id; ?>" tabindex="-1" role="dialog" aria-labelledby="mediumModalLabel<?php echo $item->id; ?>" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
@@ -195,7 +195,8 @@ $this->fileLayout = "Views/Admin/Layout.php";
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form method="post" action="<?php echo $formActionCathi ?>">
+                        <form method="post" action="<?php echo $formUpdateCathi ?>">
+                        <input name="id" value="<?php echo $item->id;?>" hidden/>
                             <div class="row form-group" class="autocomplete">
                                 <div class="col col-md-3"><label for="text-input" class=" form-control-label"><strong>Mã
                                             Học Phần</strong></label></div>
@@ -219,7 +220,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
 
                                             <!-- Datepicker as text field -->
                                             <div class="input-group date" data-date-format="dd/mm/yyyy">
-                                                <input type="date" id="date" value="<?php echo $item->Date ?>" name="date" class="form-control" placeholder="dd/mm/yyyy">
+                                                <input type="date" id="date" value="<?php echo $item->Date ?>" name="ngaythi" class="form-control" placeholder="dd/mm/yyyy">
                                                 <div class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
                                                 </div>
@@ -232,7 +233,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                             <div class="row form-group" class="autocomplete">
                                 <div class="col col-md-3"><label for="text-input"
                                         class=" form-control-label"><strong>Phòng Thi</strong></label></div>
-                                <div class="col-12 col-md-9"><input value="<?php echo $item->Room ?>" type="text" id="phongmay" name="phongmay"
+                                <div class="col-12 col-md-9"><input value="<?php echo $item->Room ?>" type="text" id="phongmay" name="phongthi"
                                         placeholder="Phòng Thi" class="form-control"><small
                                         class="form-text text-muted"></small></div>
                             </div>
@@ -261,7 +262,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                 <div class="col col-md-2"><label for="text-input"
                                         class=" form-control-label"><strong>Giờ Bắt Đầu</strong></label></div>
                                 <div class='col-12 col-md-4'>
-                                    <input type="text" value="<?php echo $item->Start ?>" id="hstart" name="hstart"
+                                    <input type="text" value="<?php echo $item->Start ?>" id="hstart" name="giobatdau"
                                         placeholder="" class="form-control" readonly><small
                                         class="form-text text-muted"></small>
                                 </div>
@@ -270,7 +271,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                 <div class="col col-md-2"><label for="text-input"
                                         class=" form-control-label"><strong>Giờ Kết Thúc</strong></label></div>
                                 <div class='col-12 col-md-4'>
-                                    <input type="text" value="<?php echo $item->End ?>" id="hstop" name="hstop"
+                                    <input type="text" value="<?php echo $item->End ?>" id="hstop" name="gioketthuc"
                                         placeholder="" class="form-control" readonly><small
                                         class="form-text text-muted"></small>
                                 </div>

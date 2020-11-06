@@ -13,8 +13,9 @@ class TaoCaController extends Controller
         // $this->renderHTML("Views/Admin/TaoCa_ListCaView.php",array("formAction"=>$formAction));
         $dataCathi = $this->fetchAll();
         $formActionCathi = "index.php?area=Admin&controller=TaoCa&action=add";
-        $this->renderHTML("Views/Admin/TaoCa_ListCaView.php",array("dataCathi"=>$dataCathi,"formActionCathi"=>$formActionCathi));
-    } 
+        $formUpdateCathi = "index.php?area=Admin&controller=TaoCa&action=update";
+        $this->renderHTML("Views/Admin/TaoCa_ListCaView.php",array("dataCathi"=>$dataCathi,"formActionCathi"=>$formActionCathi,"formUpdateCathi"=>$formUpdateCathi));
+    }
     //lấy tất cả bản ghi
     public function add()
     {
@@ -36,16 +37,15 @@ class TaoCaController extends Controller
 
         $query = $conn->prepare("UPDATE classes set SubjectID=:mahocphan, SubjectName=:hocphan,Date=:ngaythi,Start=:giobatdau,End=:gioketthuc,Room=:phongthi,Amount=:soluong where id=:id");
         $result = $query->execute(array("mahocphan"=>$mahocphan,"hocphan"=>$hocphan,"ngaythi"=>$date,"giobatdau"=>$hstart,"gioketthuc"=>$hstop,"phongthi"=>$phongmay,"soluong"=>$soluong,"id"=>$id));
-        if($result){
-            echo 'data updated';
-        }
-        
+
+        header("location:tao-ca-thi");
+
     }
     public function delete(){
         if(isset($_GET["id"])){
             $id = $_GET["id"];
         }
-        
+
         $this->deleteCa($id);
         header("location:tao-ca-thi");
     }

@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RegExam - BTL Web</title>
+    <title>RegExam</title>
     <meta name="description" content="Ela Admin - HTML5 Admin Template">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -104,14 +104,14 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="<?php if ($_GET['controller'] == 'admin') {echo 'active';} ?>">
-                        <a href="admin <?php if ($_GET['controller'] == 'admin') {echo 'active';} ?>"><i class="menu-icon fa fa-laptop"></i>Trang Chủ </a>
+                    <li class="<?php if ($_GET['controller'] == 'Home') {echo 'active';} ?>">
+                        <a href="admin <?php if ($_GET['controller'] == 'Home') {echo 'active';} ?>"><i class="menu-icon fa fa-laptop"></i>Trang Chủ </a>
                     </li>
-                    <li class="<?php if ($_GET['controller'] == 'tao-ki-thi') {echo 'active';} ?>">
-                        <a class="collapse-item <?php if ($_GET['controller'] == 'tao-ki-thi') {echo 'active';} ?> "
+                    <li class="<?php if ($_GET['controller'] == 'TaoKi') {echo 'active';} ?>">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'TaoKi') {echo 'active';} ?> "
                             href="tao-ki-thi"> <i class="menu-icon fa fa-table"></i>Kì Thi</a>
                     </li>
-                    <li class="menu-title">Danh Sách</li><!-- /.menu-title -->
+                    <li class="menu-title">Kỳ thi hiện tại</li><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Môn Thi</a>
@@ -127,31 +127,37 @@
                                     href="danh-sach-AI-duoc-thi">Trí tuệ nhân tạo</a></li>
                         </ul>
                     </li>
-                    <li class="<?php if ($_GET['controller'] == 'dssv') {echo 'active';} ?> ">
-                        <a class="collapse-item <?php if ($_GET['controller'] == 'dssv') {echo 'active';} ?> "
-                            href="dssv"> <i class="menu-icon fa fa-users"></i>Sinh Viên</a>
-                    </li>
-                    <li class="menu-item-has-children dropdown">
+                    <li class="menu-item-has-children dropdown <?php if ($_GET['controller'] == 'AddEligibleStudent' || $_GET['controller'] == 'AddNotEligibleStudent') {echo 'active';} ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
                             aria-expanded="false"> <i class="menu-icon fa fa-plus-square"></i>Nhập Liệu</a>
                         <ul class="sub-menu children dropdown-menu">
                             <li><i class="fa fa-plus-square"></i>
-                                <a class="collapse-item <?php if ($_GET['controller'] == 'AddUserStudent') {echo 'active';} ?> "
-                                    href="them-danh-sach-sinh-vien">Tài Khoản Sinh Viên</a></li>
-                            <li><i class="fa fa-plus-square"></i>
-                                <a class="collapse-item <?php if ($_GET['controller'] == 'AddEligibleStudent') {echo 'active';} ?> "
+                                <a class="collapse-item <?php if ($_GET['controller'] == '  ') {echo 'active';} ?> "
                                     href="them-sv-du-dieu-kien-thi">SV được thi</a></li>
                             <li><i class="fa fa-plus-square"></i>
                                 <a class="collapse-item <?php if ($_GET['controller'] == 'AddNotEligibleStudent') {echo 'active';} ?> "
                                     href="them-sv-cam-thi">SV cấm thi</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <li class="menu-title">Quản lý tài khoản</li><!-- /.menu-title -->
+                    <li class="<?php if ($_GET['controller'] == 'ListStudent') {echo 'active';} ?> ">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'ListStudent') {echo 'active';} ?> "
+                            href="dssv"> <i class="menu-icon fa fa-users"></i>Sinh Viên</a>
+                    </li>
+                    <li class="<?php if ($_GET['controller'] == 'AddUserStudent') {echo 'active';} ?> ">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'AddUserStudent') {echo 'active';} ?> "
+                            href="them-danh-sach-sinh-vien"> <i class="menu-icon fa fa-plus-square"></i>Nhập liệu sinh viên</a>
+                    </li>
+                    <!-- <li><a class="collapse-item <?php if ($_GET['controller'] == 'AddUserStudent') {echo 'active';} ?> "
+                                    href="them-danh-sach-sinh-vien"><i class="fa fa-plus-square"></i> Nhập liệu</a></li>
+                    <li> -->
+                    <li class="collapse-item <?php if ($_GET['controller'] == 'UserAdmin') {echo 'active';} ?> ">
                         <a class="collapse-item <?php if ($_GET['controller'] == 'UserAdmin') {echo 'active';} ?> "
                             href="user-admin"> <i class="menu-icon fa fa-gears"></i>Tài Khoản Admin</a>
                     </li>
+
                     <li class="menu-title">In</li><!-- /.menu-title -->
-                    <li>
+                    <li class="collapse-item <?php if ($_GET['controller'] == 'PrintListExam') {echo 'active';} ?> ">
                         <a class="collapse-item <?php if ($_GET['controller'] == 'PrintListExam') {echo 'active';} ?> "
                             href="in-danh-sach-thi"> <i class="menu-icon fa fa-print"></i>In Danh Sách Phòng Thi</a>
                     </li>

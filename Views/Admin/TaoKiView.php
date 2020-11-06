@@ -103,18 +103,53 @@ $this->fileLayout = "Views/Admin/Layout.php";
         <?php $i=1; ?>
         <?php foreach ($data as $item) : ?>
         <?php
-            echo'<a href="index.php?area=Admin&controller=TaoCa&id='.$item->id.'">';
-                echo'<div class="flip" style="width: 388px;">';
-                    echo'<div class="front" style="background-image: url(https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">';
-                        echo'<h1 class="text-shadow">'.$item->HocKi.' - '.$item->Năm.'</h1>';
-                    echo'</div>';
-                    echo'<div class="back">';
-                    echo'<h2>'.$item->TenKiThi.'</h2>';
-                        echo'<p>'.$item->Note.'</p>';
-                        echo'<button type="button" class="btn btn-danger">Xóa</button>';
-                    echo'</div>';
+            // echo'<a href="index.php?area=Admin&controller=TaoCa&id='.$item->id.'">';
+            //     echo'<div class="flip" style="width: 388px;">';
+            //         echo'<div class="front" style="';
+            //         if($item->Status!=1){
+            //             echo 'opacity:0.4;';
+            //         }
+            //         echo 'background-image: url(https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">';
+            //             echo'<h1 class="text-shadow">'.$item->HocKi.' - '.$item->Năm.'</h1>';
+            //         echo'</div>';
+            //         echo'<div class="back">';
+            //         echo'<h2>'.$item->TenKiThi.'</h2>';
+            //             echo'<p>'.$item->Note.'</p>';
+            //             echo'<button type="button" class="btn btn-danger">Xóa</button>';
+            //             if($item->Status==1)
+            //             echo'<button type="button" style="margin-left:5px" class="btn btn-danger">Gỡ kỳ hiện tại</button>
+            //             <br/>
+            //                 <p>Active</p>';
+            //             else
+            //              echo'<button type="button" style="margin-left:5px" class="btn btn-danger">Chọn kỳ hiện tại</button>';
+            //             echo'<a href="index.php?area=Admin&controller=TaoKi&action=delete&id='.$item->id.'" style="color:red;">Xóa</a>';
+            //         echo'</div>';
+            //     echo'</div>';
+            // echo'</a>';
+
+
+            // echo'<a href="index.php?area=Admin&controller=TaoCa&id='.$item->id.'">';
+            echo'<div class="flip" style="width: 388px;">';
+                echo'<div class="front" style="';
+                if($item->Status!=1){
+                    echo 'opacity:0.4;';
+                }
+                echo 'background-image: url(https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg?w=1260&h=750&dpr=2&auto=compress&cs=tinysrgb)">';
+                    echo'<h1 class="text-shadow">'.$item->HocKi.' - '.$item->Năm.'</h1>';
                 echo'</div>';
-            echo'</a>';
+                echo'<div class="back">';
+                echo'<h2>'.$item->TenKiThi.'</h2>';
+                echo'<p>'.$item->Note.'</p>';
+                if($item->Status)
+                echo '<p style="margin-left:5px;">Active</p>';
+                echo'<a class="btn btn-success"  role="button"  href="index.php?area=Admin&controller=TaoCa&id='.$item->id.'">Xem chi tiết</a>';
+                    echo'<a class="btn btn-danger"  style="margin-left:5px" role="button" href="index.php?area=Admin&controller=TaoKi&action=delete&id='.$item->id.'" style="color:red;">Xóa</a>';
+
+                    if($item->Status==0)
+                     echo'<button type="button" style="margin-left:5px" class="btn btn-danger">Chọn kỳ hiện tại</button>';
+                echo'</div>';
+            echo'</div>';
+        // echo'</a>';
             ?>
         <?php $i++; ?>
         <?php endforeach; ?>

@@ -9,7 +9,7 @@ class TaoKiController extends Controller
     }
     public function index()
     {
-        $data = $this->fetchAll();  
+        $data = $this->fetchAll();
         $formAction = "index.php?area=Admin&controller=TaoKi&action=add";
         $this->renderHTML("Views/Admin/TaoKiView.php",array("data"=>$data,"formAction"=>$formAction));
         // $this->renderHTML("Views/Admin/TaoKiView.php",array("formAction"=>$formAction));
@@ -17,6 +17,15 @@ class TaoKiController extends Controller
     public function add()
     {
         $this->insert();
+        header("location:tao-ki-thi");
+    }
+
+    public function delete(){
+        if(isset($_GET["id"])){
+            $id = $_GET["id"];
+        }
+
+        $this->deleteKi($id);
         header("location:tao-ki-thi");
     }
 }
