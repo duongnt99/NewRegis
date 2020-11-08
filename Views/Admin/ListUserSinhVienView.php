@@ -55,7 +55,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                     <th>Giới tính</th>
                                     <th>Quê quán</th>
                                     <th>Lớp khóa học</th>
-                                    <th>Mật khẩu</th>
+                                    <!-- <th>Mật khẩu</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                                     <td><?php echo $item->Gender ?></td>
                                     <td><?php echo $item->HomeTown ?></td>
                                     <td><?php echo $item->Class ?></td>
-                                    <td><?php echo $item->PassWord ?></td>
+
                                 </tr>
                                 <?php $i++; ?>
                                 <?php endforeach; ?>

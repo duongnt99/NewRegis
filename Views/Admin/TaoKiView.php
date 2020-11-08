@@ -146,7 +146,7 @@ $this->fileLayout = "Views/Admin/Layout.php";
                     echo'<a class="btn btn-danger"  style="margin-left:5px" role="button" href="index.php?area=Admin&controller=TaoKi&action=delete&id='.$item->id.'" style="color:red;">Xóa</a>';
 
                     if($item->Status==0)
-                     echo'<button type="button" style="margin-left:5px" class="btn btn-danger">Chọn kỳ hiện tại</button>';
+                     echo'<a class="btn btn-success"  style="margin-left:5px" role="button" href="index.php?area=Admin&controller=TaoKi&action=setActive&id='.$item->id.'">Chọn kỳ hiện tại</a>';
                 echo'</div>';
             echo'</div>';
         // echo'</a>';

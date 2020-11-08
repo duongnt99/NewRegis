@@ -28,4 +28,14 @@ class TaoKiController extends Controller
         $this->deleteKi($id);
         header("location:tao-ki-thi");
     }
+
+    public function setActive(){
+        if(isset($_GET["id"])){
+            $id = $_GET["id"];
+        }
+        $this->activeKithi($id);
+        header("location:tao-ki-thi");
+    }
+
+
 }

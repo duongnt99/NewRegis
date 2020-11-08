@@ -10,10 +10,9 @@ trait DangKyThiModel
 		}
 		$db = new PDOData();
 		$data = $db->doPreparedQuery("
-		SELECT * from classes 
-		INNER JOIN (SELECT SubjectID from listSubject WHERE StudentID =? and status = 1) listSubject 
-		ON classes.SubjectID = listSubject.SubjectID  
-		ORDER BY classes.SubjectID DESC",array($mssv));
+		SELECT * from classes INNER JOIN (SELECT SubjectID from listSubject WHERE StudentID =? and status = 1)
+		listSubject ON classes.SubjectID = listSubject.SubjectID inner join (select id from kithi where Status=1)
+		kithi on classes.IDKiThi = kithi.id ORDER BY classes.SubjectID DESC",array($mssv));
 		return $data;
 	}
 	public function doAdd()
@@ -42,7 +41,7 @@ trait DangKyThiModel
 		}else{
 			return false;
 		}
-		
+
 	}
 
 	//lay ket qua dang ky
@@ -50,7 +49,7 @@ trait DangKyThiModel
 	{
 		$mssv = $_SESSION['mssv'];
 		$db = new PDOData();
-		$data = $db->doPreparedQuery("SELECT * from ketqua where StudentID=?",array($mssv));
+		$data = $db->doPreparedQuery("SELECT * from ketqua inner join (select id from kithi where Status=1) kithi on ketqua.IDKiThi = kithi.id where StudentID=?",array($mssv));
 		return $data;
 	}
 

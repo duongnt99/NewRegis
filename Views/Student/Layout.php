@@ -39,6 +39,13 @@
     <link href="profile/04-elements/css/styles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://kit.fontawesome.com/a9ea3721b5.js" crossorigin="anonymous"></script>
+    <style>
+    .content{
+
+    min-height: calc(100vh - 226px);
+
+    }
+    </style>
     <!-- <style>
     #weatherWidget .currentDesc {
         color: #ffffff!important;
@@ -83,15 +90,15 @@
         <nav class="navbar navbar-expand-sm navbar-default">
             <div id="main-menu" class="main-menu collapse navbar-collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active">
+                    <li class=" <?php if ($_GET['controller'] == 'Home') {echo 'active';} ?>">
                         <a href="home"><i class="menu-icon fa fa-laptop"></i>Trang Chủ </a>
                     </li>
-                    <li>
+                    <li class=" <?php if ($_GET['controller'] == 'DangKyThi') {echo 'active';} ?>">
                         <a class="collapse-item <?php if ($_GET['controller'] == 'DangKyThi') {echo 'active';} ?>"
                             href="dangkythi"> <i class="menu-icon fa fa-th-large"></i>Đăng Ký Môn Thi</a>
                     </li>
 
-                    <li>
+                    <li class=" <?php if ($_GET['controller'] == 'InDangKy') {echo 'active';} ?>">
                         <a class="collapse-item <?php if ($_GET['controller'] == 'InDangKy') {echo 'active';} ?>"
                             href="indangky"> <i class="menu-icon fa fa-print"></i>In Danh Sách Thi</a>
                     </li>
@@ -147,14 +154,7 @@
             <div class="footer-inner bg-white">
                 <div class="row">
                     <div class="col-sm-10">
-                        Copyright &copy; 
-                    </div>
-                    <div class="col-sm-2 text-right">
-                        <ul>
-                            <li>Nguyễn Chí Đạt</li>
-                            <li>Nguyễn Thái Dương</li>
-                            <li>Bùi Huỳnh Đức</li>
-                        </ul>
+                        Copyright &copy;
                     </div>
                 </div>
             </div>

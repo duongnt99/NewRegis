@@ -19,6 +19,21 @@ trait TaoKiModel{
         $query->execute(array("tenkithi"=>$tenkithi,"namtochuc"=>$namtochuc,"hocki"=>$hocki,"ghichu"=>$ghichu));
     }
 
+    //thêm kì thi
+    public function activeKithi($id){
+        $conn = Connection::getInstance();
+        $query1 = $conn->query("Update kithi set Status=0");
+        $query1->execute();
+        $query2 = $conn->prepare("Update kithi set Status = 1 where id=:id");
+        $query2->execute(array("id" => $id));
+    }
+    //thêm kì thi
+    public function getActiveKithi(){
+        $conn = Connection::getInstance();
+        $query = $conn->query("SELECT * FROM kithi where Status = 1");
+        return $query->fetchAll();
+    }
+
 
     public function deleteKi($id)
 	{
