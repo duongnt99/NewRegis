@@ -20,8 +20,7 @@ class AddNotEligibleStudentController extends Controller
         $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
         $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
         $db = new PDOData();
-        $data = $db->doPreparedQuery("Select * from kithi where Status=1");
-        echo $data;
+        $data = $db->doQuery("Select * from kithi where Status=1");
         for ($row = 2; $row <= $highestRow; $row++) {
             $mssv = $sheetData[$row]['B'];
             $name = $sheetData[$row]['C'];
@@ -30,7 +29,7 @@ class AddNotEligibleStudentController extends Controller
             $mahocphan = $sheetData[$row]['F'];
             $hocphan = $sheetData[$row]['G'];
             $status=0;
-            $IDKiThi=$data['id'];
+            $IDKiThi=$data[0]['id'];
             $conn = Connection::getInstance();
 			$query = $conn->prepare("insert into listsubject set StudentName=:name, StudentID=:mssv, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,SubjectID=:mahocphan,Status=:status, IDKiThi=:IDKiThi");
 			$query->execute(array("name"=>$name,"mssv"=>$mssv,"ngaysinh" => $ngaysinh,"lopkhoahoc" => $lopkhoahoc,"mahocphan" => $mahocphan,"hocphan" => $hocphan,"status" => $status, "IDKiThi"=> $IDKiThi));
