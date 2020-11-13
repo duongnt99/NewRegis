@@ -20,7 +20,7 @@ class AddEligibleStudentController extends Controller
         $sheetData = $objExcel->getActiveSheet()->toArray('null', true, true, true);
         $highestRow = $objExcel->setActiveSheetIndex()->getHighestRow();
         $db = new PDOData();
-        $data1 = $db->doQuery('Select * from kithi where Status=1');
+        $data = $db->doQuery('Select * from kithi where Status=1');
         for ($row = 2; $row <= $highestRow; $row++) {
             $mssv = $sheetData[$row]['B'];
             $name = $sheetData[$row]['C'];
@@ -29,41 +29,11 @@ class AddEligibleStudentController extends Controller
             $mahocphan = $sheetData[$row]['F'];
             $hocphan = $sheetData[$row]['G'];
             $status=1;
-            $IDKiThi=$data1[0]['id'];
+            $IDKiThi=$data[0]['id'];
             $conn = Connection::getInstance();
-            $data = $db->doPreparedQuery('Select * from listsubject where StudentID=? and SubjectID=? and IDKiThi=?',array($mssv, $mahocphan,  $IDKiThi));
-            if($data == null){
-                $query = $conn->prepare("insert into listsubject set StudentName=:name, StudentID=:mssv, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,SubjectID=:mahocphan,Status=:status, IDKiThi=:IDKiThi");
-            }
-            else {
-                $query = $conn->prepare("update listsubject set StudentName=:name, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,Status=:status where StudentID=:mssv and SubjectID=:mahocphan and IDKiThi=:IDKiThi");
-            }
+			$query = $conn->prepare("insert into listsubject set StudentName=:name, StudentID=:mssv, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,SubjectID=:mahocphan,Status=:status, IDKiThi=:IDKiThi");
 			$query->execute(array("name"=>$name,"mssv"=>$mssv,"ngaysinh" => $ngaysinh,"lopkhoahoc" => $lopkhoahoc,"mahocphan" => $mahocphan,"hocphan" => $hocphan,"status" => $status, "IDKiThi"=> $IDKiThi));
         }
-        header('location:them-sv-du-dieu-kien-thi');
-    }
-
-    public function addOne()
-    {
-        $db = new PDOData();
-        $data1 = $db->doQuery('Select * from kithi where Status=1');
-        $mssv = $_POST['msv'];
-        $name = $_POST['fullname'];
-        $ngaysinh = $_POST['date'];
-        $lopkhoahoc = $_POST['classes'];
-        $mahocphan = $_POST['SubjectCode'];
-        $hocphan = $_POST['SubjectName'];
-        $status=1;
-        $IDKiThi=$data1[0]['id'];
-        $conn = Connection::getInstance();
-        $data = $db->doPreparedQuery('Select * from listsubject where StudentID=? and SubjectID=? and IDKiThi=?',array($mssv, $mahocphan,  $IDKiThi));
-        if($data == null){
-            $query = $conn->prepare("insert into listsubject set StudentName=:name, StudentID=:mssv, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,SubjectID=:mahocphan,Status=:status, IDKiThi=:IDKiThi");
-        }
-        else {
-            $query = $conn->prepare("update listsubject set StudentName=:name, DateOfBirth=:ngaysinh, Class=:lopkhoahoc,SubjectName=:hocphan,Status=:status where StudentID=:mssv and SubjectID=:mahocphan and IDKiThi=:IDKiThi");
-        }
-        $query->execute(array("name"=>$name,"mssv"=>$mssv,"ngaysinh" => $ngaysinh,"lopkhoahoc" => $lopkhoahoc,"mahocphan" => $mahocphan,"hocphan" => $hocphan,"status" => $status, "IDKiThi"=> $IDKiThi));
         header('location:them-sv-du-dieu-kien-thi');
     }
 }
