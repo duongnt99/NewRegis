@@ -112,20 +112,10 @@
                             href="tao-ki-thi"> <i class="menu-icon fa fa-table"></i>Kì Thi</a>
                     </li>
                     <li class="menu-title">Kỳ thi hiện tại</li><!-- /.menu-title -->
-                    <li class="menu-item-has-children dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false"> <i class="menu-icon fa fa-book"></i>Môn Thi</a>
-                        <ul class="sub-menu children dropdown-menu">
-                            <li id="mon1"><i class="fa fa-book"></i>
-                                <a class="collapse-item <?php if ($_GET['controller'] == 'ShowSubject') {echo 'active';} ?> "
-                                    href="danh-sach-hqt-duoc-thi">Hệ quản trị cơ sở dữ liệu</a></li>
-                            <li><i class="fa fa-book"></i>
-                                <a class="collapse-item <?php if ($_GET['controller'] == 'ShowSubject') {echo 'active';} ?> "
-                                    href="danh-sach-web-duoc-thi">Phát triển ứng dụng Web</a></li>
-                            <li><i class="fa fa-book"></i>
-                                <a class="collapse-item <?php if ($_GET['controller'] == 'ShowSubject') {echo 'active';} ?> "
-                                    href="danh-sach-AI-duoc-thi">Trí tuệ nhân tạo</a></li>
-                        </ul>
+
+                    <li class="<?php if ($_GET['controller'] == 'ShowSubject') {echo 'active';} ?> ">
+                        <a class="collapse-item <?php if ($_GET['controller'] == 'ShowSubject') {echo 'active';} ?> "
+                            href="danh-sach-mon"> <i class="menu-icon fa fa-book"></i>Danh sách môn thi</a>
                     </li>
                     <li class="menu-item-has-children dropdown <?php if ($_GET['controller'] == 'AddEligibleStudent' || $_GET['controller'] == 'AddNotEligibleStudent') {echo 'active';} ?>">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
